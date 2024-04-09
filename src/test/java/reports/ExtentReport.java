@@ -14,7 +14,6 @@ public final class ExtentReport {
 
 	private static ExtentReport extentReport;
 	private ExtentReports extent;
-	// private Map<Integer, ExtentTest> extentMap = new HashMap<Integer, ExtentTest>();
 
 	private ExtentReport() {
 
@@ -28,6 +27,14 @@ public final class ExtentReport {
 		return extentReport;
 	}
 
+	/**
+	 * Create an extent report
+	 * 
+	 * @param reportName
+	 * @return
+	 * @throws Exception
+	 * @author Anand Kanekal
+	 */
 	public ExtentReports createReport(String reportName) throws Exception {
 		extent = new ExtentReports();
 
@@ -48,6 +55,12 @@ public final class ExtentReport {
 		return extent;
 	}
 	
+	/**
+	 * Add system information to the report
+	 * 
+	 * @param extentReports
+	 * @author Anand Kanekal
+	 */
 	private void addSystemInfo(ExtentReports extentReports) {
 		extentReports.setSystemInfo("os", System.getProperty("os.name"));
 		extentReports.setSystemInfo("java version", System.getProperty("java.version"));
@@ -61,23 +74,22 @@ public final class ExtentReport {
 		throw new Exception("Extent reports is not created");
 	}
 
+	/**
+	 * Create a new test in report
+	 * 
+	 * @param testName defines the name of the test
+	 * @author Anand Kanekal
+	 */
 	public void startTest(String testName) {
 		ExtentTest test = extent.createTest(testName);
 		ExtentManager.setExtentTest(test);
-		// extentMap.put((int) Thread.currentThread().getId(), test);
-		// return test;
 	}
 
-//	public ExtentTest getTest() throws Exception {
-//		ExtentTest test = extentMap.get((int) Thread.currentThread().getId());
-//
-//		if (Objects.nonNull(test)) {
-//			return test;
-//		}
-//
-//		throw new Exception("Extent test is not intantiated. Kindly start extent test");
-//	}
-
+	/**
+	 * Flush the content to the report
+	 * 
+	 * @author Anand Kanekal
+	 */
 	public void flushReport() {
 		extent.flush();
 		ExtentManager.unloadExtentTest();
