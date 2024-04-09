@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+	<listeners>
+		<listener class-name="listeners.TestListener" />
+	</listeners>
+
+	<test name="Test" thread-count="2" parallel="methods">
+		<classes>
+			<class name="tests.SampleTest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

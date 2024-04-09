@@ -1,8 +1,9 @@
-package com.framework.utils;
+package utilities;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Objects;
 import java.util.Properties;
 
 import org.openqa.selenium.PageLoadStrategy;
@@ -13,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.framework.contants.Path;
+import constants.Path;
 
 public class BrowserManager {
 
@@ -40,7 +41,7 @@ public class BrowserManager {
 	 * @author Anand Kanekal
 	 */
 	public static BrowserManager getInstance() {
-		if (browserManager == null) {
+		if (Objects.isNull(browserManager)) {
 			browserManager = new BrowserManager();
 		}
 
@@ -52,7 +53,7 @@ public class BrowserManager {
 	 * 
 	 * @author Anand Kanekal
 	 */
-	public void setChromeOptions() {
+	private void setChromeOptions() {
 		String headless = browserProperties.getProperty("headless").toLowerCase().trim();
 		String incognito = browserProperties.getProperty("incognito").toLowerCase().trim();
 		String acceptInsecureCerts = browserProperties.getProperty("accept.insecure.certs").toLowerCase().trim();
@@ -80,8 +81,9 @@ public class BrowserManager {
 	 * Get Chrome options
 	 * 
 	 * @return chromeOptions
+	 * @author Anand Kanekal
 	 */
-	public ChromeOptions getChromeOptions() {
+	private ChromeOptions getChromeOptions() {
 		return chromeOptions;
 	}
 
@@ -130,7 +132,7 @@ public class BrowserManager {
 	 * @author Anand Kanekal
 	 */
 	public WebDriver getDriver() {
-		if (driver != null) {
+		if (Objects.nonNull(driver)) {
 			return driver;
 		}
 
@@ -145,10 +147,17 @@ public class BrowserManager {
 	 * @throws InterruptedException
 	 * @author Anand Kanekal
 	 */
-	public static void killDriverProcess(String processName) throws IOException, InterruptedException {
-		String command = String.format("taskkill /F /IM %s", processName);
-
-		Runtime.getRuntime().exec(command);
-		Thread.sleep(3000);
+	public void killDriverProcess() throws IOException, InterruptedException {
+		String browser = browserProperties.getProperty("browser").toLowerCase().trim();
+		
+		String command = "taskkill /F /IM %s";
+		
+		switch (browser) {
+		case "chrome":
+			command = String.format(command, "chromedriver.exe");
+			Runtime.getRuntime().exec(command);
+			Thread.sleep(3000);
+			break;
+		}	
 	}
 }

@@ -1,0 +1,13 @@
+{
+	"theme": "STANDARD",
+	"encoding": "utf-8",
+	"protocol": "HTTPS",
+	"timelineEnabled": true,
+	"offlineMode": false,
+	"thumbnailForBase64": true,
+	"documentTitle": "Automation Report",
+	"reportName": "Extent Reports",
+	"timeStampFormat": "MM/dd/yyyy HH:mm:ss a",
+	"js": "",
+	"css": ""
+}
