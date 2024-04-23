@@ -1,7 +1,6 @@
 package reports;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -9,6 +8,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import constants.Path;
+import exceptions.ExtentReportException;
 
 public final class ExtentReport {
 
@@ -38,15 +38,15 @@ public final class ExtentReport {
 	public ExtentReports createReport(String reportName) throws Exception {
 		extent = new ExtentReports();
 
-		ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(
-				Path.EXTENT_REPORTS + File.separator + reportName + ".html");
+		String reportPath = Path.EXTENT_REPORTS + File.separator + reportName + ".html";
+		ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(reportPath);
 
 		try {
 			final File extentConfig = new File(
 					Path.TEST_RESOURCES + File.separator + "config" + File.separator + "spark-config.json");
 			extentSparkReporter.loadJSONConfig(extentConfig);
-		} catch (IOException e) {
-			throw new Exception("An error encountered while reading spark-config.xml");
+		} catch (Exception e) {
+			throw new ExtentReportException("An error encountered while reading spark-config.xml");
 		}
 
 		addSystemInfo(extent);

@@ -1,12 +1,8 @@
-package utilities;
+package utility;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,13 +11,15 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import constants.Path;
-
 public class CommonUtils {
 
 	public static final int SHORT_TIMEOUT = 10;
 	public static final int NORMAL_TIMEOUT = 30;
 	public static final int LONG_TIMEOUT = 60;
+
+	private CommonUtils() {
+
+	}
 
 	/**
 	 * Waits for the visibility of web element
@@ -138,7 +136,13 @@ public class CommonUtils {
 		jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 
-	public static String getBase64Screenshot() throws Exception {
+	/**
+	 * Get a Base64 format of screenshot
+	 * 
+	 * @return
+	 * @author Anand Kanekal
+	 */
+	public static String getBase64Screenshot() {
 		TakesScreenshot takesScreenshot = (TakesScreenshot) BrowserManager.getInstance().getDriver();
 		return takesScreenshot.getScreenshotAs(OutputType.BASE64);
 	}

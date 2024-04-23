@@ -1,4 +1,4 @@
-package utilities;
+package exceptions;
 
 public class FrameworkException extends RuntimeException {
 	

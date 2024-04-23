@@ -5,9 +5,8 @@ import org.testng.annotations.BeforeClass;
 
 import reports.ExtentLogger;
 import reports.ExtentReport;
-import utilities.TestManager;
 
-public class SampleTest extends TestManager {
+public class SampleTest extends BaseTest {
 
 	private ExtentReport extentReport;
 
@@ -19,11 +18,14 @@ public class SampleTest extends TestManager {
 
 	@Test(description = "First test")
 	public void firstTest() throws Exception {
+		System.out.println("First Test " + Thread.currentThread().getId());
 		ExtentLogger.info("First test executed");
+		System.out.println(10/0);
 	}
 
 	@Test(description = "Second test")
 	public void secondTest() throws Exception {
+		System.out.println("Second Test " + Thread.currentThread().getId());
 		ExtentLogger.info("Second test executed");
 		System.out.println(10/0);
 	}

@@ -2,7 +2,7 @@ package reports;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 
-import utilities.CommonUtils;
+import utility.CommonUtils;
 
 public class ExtentLogger {
 	

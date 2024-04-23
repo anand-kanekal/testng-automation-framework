@@ -1,4 +1,4 @@
-package utilities;
+package utility;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import constants.Path;
+import handler.DriverHandler;
 
 public class BrowserManager {
 
@@ -111,7 +112,8 @@ public class BrowserManager {
 			System.out.println("Invalid browser name specified in browser.properties present at location "
 					+ Path.TEST_RESOURCES + File.separator + "config");
 		}
-		
+
+		DriverHandler.setDriver(driver);
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 	}
@@ -132,8 +134,8 @@ public class BrowserManager {
 	 * @author Anand Kanekal
 	 */
 	public WebDriver getDriver() {
-		if (Objects.nonNull(driver)) {
-			return driver;
+		if (Objects.nonNull(DriverHandler.getDriver())) {
+			return DriverHandler.getDriver();
 		}
 
 		throw new RuntimeException("Driver is not initialized");
@@ -149,15 +151,13 @@ public class BrowserManager {
 	 */
 	public void killDriverProcess() throws IOException, InterruptedException {
 		String browser = browserProperties.getProperty("browser").toLowerCase().trim();
-		
+
 		String command = "taskkill /F /IM %s";
-		
-		switch (browser) {
-		case "chrome":
+
+		if (browser.equalsIgnoreCase("chrome")) {
 			command = String.format(command, "chromedriver.exe");
 			Runtime.getRuntime().exec(command);
 			Thread.sleep(3000);
-			break;
-		}	
+		}
 	}
 }

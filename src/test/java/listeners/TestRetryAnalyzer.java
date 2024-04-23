@@ -9,6 +9,11 @@ public class TestRetryAnalyzer implements IRetryAnalyzer {
 	
 	private static final int retryLimit = 0;
 	
+	/**
+	 * Retry failed test
+	 * 
+	 * @author Anand Kanekal
+	 */
 	@Override
 	public boolean retry(ITestResult result) {
 		boolean flag = false;
