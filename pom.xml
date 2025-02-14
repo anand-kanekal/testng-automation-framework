@@ -14,6 +14,7 @@
 		<testng.version>7.9.0</testng.version>
 		<poi.version>5.2.5</poi.version>
 		<extent.version>5.1.1</extent.version>
+		<jackson.version>2.18.2</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -52,6 +53,18 @@
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>${extent.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 	</dependencies>
