@@ -3,8 +3,8 @@ package tests;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 
-import reports.ExtentLogger;
-import reports.ExtentReport;
+import framework.report.ExtentLogger;
+import framework.report.ExtentReport;
 
 public class SampleTest extends BaseTest {
 

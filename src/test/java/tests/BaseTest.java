@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+import framework.browser.BrowserManager;
+import framework.browser.DriverHandler;
+import framework.constant.Path;
+import framework.util.PropertyFileManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import constants.Path;
-import utility.BrowserManager;
-import utility.PropertyFileManager;
 
 public class BaseTest {
 
@@ -25,8 +25,8 @@ public class BaseTest {
 	public void setUp() throws IOException, InterruptedException {
 		// BrowserManager.getInstance().killDriverProcess();
 		BrowserManager.getInstance().openBrowser();
-		System.out.println(BrowserManager.getInstance().getDriver() + " " + Thread.currentThread().getId());
-		BrowserManager.getInstance().getDriver().get(application.getProperty("app.url"));
+		System.out.println(DriverHandler.getDriver() + " " + Thread.currentThread().getId());
+		DriverHandler.getDriver().get(application.getProperty("app.url"));
 	}
 
 	@AfterMethod

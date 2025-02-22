@@ -1,12 +1,11 @@
-package listeners;
+package framework.listeners;
 
+import framework.report.ExtentLogger;
+import framework.report.ExtentReport;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
-import reports.ExtentLogger;
-import reports.ExtentReport;
 
 public class TestListener implements ITestListener, ISuiteListener {
 

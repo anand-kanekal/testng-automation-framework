@@ -1,14 +1,12 @@
-package handler;
+package framework.browser;
 
 import org.openqa.selenium.WebDriver;
 
 public class DriverHandler {
 
-	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
+	private static final ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 	
-	private DriverHandler() {
-		
-	}
+	private DriverHandler() {}
 
 	public static void setDriver(WebDriver driver) {
 		driverThread.set(driver);
@@ -21,5 +19,4 @@ public class DriverHandler {
 	public static void unload() {
 		driverThread.remove();
 	}
-
 }

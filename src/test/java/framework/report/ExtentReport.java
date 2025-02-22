@@ -1,4 +1,4 @@
-package reports;
+package framework.report;
 
 import java.io.File;
 import java.util.Objects;
@@ -6,9 +6,7 @@ import java.util.Objects;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
-import constants.Path;
-import exceptions.ExtentReportException;
+import framework.constant.Path;
 
 public final class ExtentReport {
 
@@ -46,7 +44,7 @@ public final class ExtentReport {
 					Path.TEST_RESOURCES + File.separator + "config" + File.separator + "spark-config.json");
 			extentSparkReporter.loadJSONConfig(extentConfig);
 		} catch (Exception e) {
-			throw new ExtentReportException("An error encountered while reading spark-config.xml");
+			throw new RuntimeException("An error encountered while reading spark-config.xml");
 		}
 
 		addSystemInfo(extent);
