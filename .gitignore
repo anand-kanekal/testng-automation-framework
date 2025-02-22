@@ -1,5 +1,6 @@
-target/
-test-output/
+.idea
+target
+test-output
 .settings
 .classpath
 .project
