@@ -1,7 +1,7 @@
-package framework.listeners;
+package core.listeners;
 
-import framework.report.ExtentLogger;
-import framework.report.ExtentReport;
+import core.report.ExtentLogger;
+import core.report.ExtentReport;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestListener;
@@ -42,6 +42,13 @@ public class TestListener implements ITestListener, ISuiteListener {
 			ExtentLogger.pass(result.getMethod().getDescription());
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		if (result.wasRetried()) {
+			ExtentReport.getInstance().removeTest();
 		}
 	}
 

@@ -1,20 +1,18 @@
-package framework.report;
+package core.report;
 
 import com.aventstack.extentreports.ExtentTest;
 
 public final class ExtentManager {
 
-	private static ThreadLocal<ExtentTest> extentTestLocal = new ThreadLocal<ExtentTest>();
+	private static final ThreadLocal<ExtentTest> extentTestLocal = new ThreadLocal();
 
-	private ExtentManager() {
-
-	}
+	private ExtentManager() {}
 
 	static void setExtentTest(ExtentTest test) {
 		extentTestLocal.set(test);
 	}
 
-	static ExtentTest getExtentTest() {
+	public static ExtentTest getExtentTest() {
 		return extentTestLocal.get();
 	}
 

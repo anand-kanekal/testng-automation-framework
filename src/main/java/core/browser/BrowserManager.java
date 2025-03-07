@@ -1,7 +1,7 @@
-package framework.browser;
+package core.browser;
 
-import framework.constant.Path;
-import framework.util.PropertyFileManager;
+import core.constant.Path;
+import core.util.PropertyFileManager;
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
@@ -57,6 +57,7 @@ public class BrowserManager {
 
 		if (Boolean.parseBoolean(headless)) {
 			chromeOptions.addArguments("--headless=chrome");
+			chromeOptions.addArguments("--window-size==1920,1080");
 		}
 
 		if (Boolean.parseBoolean(incognito)) {

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite">
     <listeners>
-        <listener class-name="framework.listeners.AnnotationTransformer"/>
-        <listener class-name="framework.listeners.TestListener"/>
+        <listener class-name="core.listeners.AnnotationTransformer"/>
+        <listener class-name="core.listeners.TestListener"/>
     </listeners>
 
     <test name="Test" parallel="methods">
         <classes>
-            <class name="tests.SampleTest"/>
+            <class name="app.SampleTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

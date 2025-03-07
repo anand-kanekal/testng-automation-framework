@@ -1,6 +1,6 @@
-package framework.util;
+package core.util;
 
-import framework.constant.Path;
+import core.constant.Path;
 
 import javax.mail.*;
 import javax.mail.internet.*;

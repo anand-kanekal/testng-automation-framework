@@ -1,4 +1,4 @@
-package framework.constant;
+package core.constant;
 
 import java.io.File;
 

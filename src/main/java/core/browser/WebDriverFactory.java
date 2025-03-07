@@ -1,7 +1,7 @@
-package framework.browser;
+package core.browser;
 
-import framework.constant.Path;
-import framework.util.PropertyFileManager;
+import core.constant.Path;
+import core.util.PropertyFileManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -22,7 +22,7 @@ public class WebDriverFactory {
 
     private WebDriverFactory() {}
 
-    public static WebDriver createDriver(String browserName) {
+    public static void createDriver(String browserName) {
         WebDriver driver;
 
         switch (browserName.toLowerCase()) {
@@ -43,7 +43,5 @@ public class WebDriverFactory {
         }
 
         DriverHandler.setDriver(driver);
-
-        return driver;
     }
 }

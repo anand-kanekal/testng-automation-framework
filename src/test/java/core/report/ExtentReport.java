@@ -1,4 +1,4 @@
-package framework.report;
+package core.report;
 
 import java.io.File;
 import java.util.Objects;
@@ -6,16 +6,14 @@ import java.util.Objects;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import framework.constant.Path;
+import core.constant.Path;
 
 public final class ExtentReport {
 
 	private static ExtentReport extentReport;
 	private ExtentReports extent;
 
-	private ExtentReport() {
-
-	}
+	private ExtentReport() {}
 
 	public static ExtentReport getInstance() {
 		if (Objects.isNull(extentReport)) {
@@ -81,6 +79,10 @@ public final class ExtentReport {
 	public void startTest(String testName) {
 		ExtentTest test = extent.createTest(testName);
 		ExtentManager.setExtentTest(test);
+	}
+
+	public void removeTest() {
+		extentReport.removeTest();
 	}
 
 	/**

@@ -1,18 +1,16 @@
-package tests;
+package app;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 
-import framework.report.ExtentLogger;
-import framework.report.ExtentReport;
+import core.report.ExtentLogger;
+import core.report.ExtentReport;
 
 public class SampleTest extends BaseTest {
 
-	private ExtentReport extentReport;
-
-	@BeforeClass
+    @BeforeClass
 	public void beforeClass() throws Exception {
-		extentReport = ExtentReport.getInstance();
+        ExtentReport extentReport = ExtentReport.getInstance();
 		extentReport.createReport("Google");
 	}
 

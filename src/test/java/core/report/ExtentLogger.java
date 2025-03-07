@@ -1,8 +1,8 @@
-package framework.report;
+package core.report;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 
-import framework.util.ActionUtils;
+import core.util.ActionUtils;
 
 public class ExtentLogger {
 	
